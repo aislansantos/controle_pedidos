@@ -1,0 +1,41 @@
+{% extends 'cadastros/base.html' %}
+
+{% block title %} Cadastro clientes {% endblock %}
+
+{% block content %}
+    <br>
+    <h1>Cadastro de Clientes</h1>
+    <hr>
+    <table id="clientes_table" class="display">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+                <tr>
+                    <td>
+                        {{cliente.nome}}
+                    </td>
+                    <td>
+                        Editar | Excluir
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" class="init">
+        $(document).ready( function () {
+            $('#clientes_table').DataTable();
+        } );
+    </script>
+
+    <a href="{% url 'clientes_cadastro' %}" class="btn btn-secondary">Cadastrar</a>
+
+{% endblock %}
