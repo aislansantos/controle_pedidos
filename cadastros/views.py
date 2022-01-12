@@ -7,8 +7,6 @@ from .forms import ClienteForm
 # redicionamento de paginas
 def home(request):
     return render(request, 'cadastros/index.html')
-def clientes_cadastro(request):
-    return render(request,'cadastros/clientes_cadastro.html')
 
 def list_clientes(request):
     clientes = Cliente.objects.all()
@@ -16,4 +14,11 @@ def list_clientes(request):
 
 def new_cliente(request):
     if request.method == "POST":
-        form = ClienteForm(request.POST)
+        form = ClienteForm()
+        if form.is_valid():
+            cliente = form.save(commit=False)
+            cliente.save()
+    else:
+        form = ClienteForm()
+    clientes = Cliente.objects.all()
+    return render(request, 'cadastros/index.html')
