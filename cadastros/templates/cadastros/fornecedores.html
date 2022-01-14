@@ -1,0 +1,42 @@
+{% extends 'cadastros/base.html' %}
+
+{% block title %} Cadastro clientes {% endblock %}
+
+{% block content %}
+    <br>
+    <h1>Cadastro de Fornecedores</h1>
+    <hr>
+    <table id="fornecedores_table" class="display">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fornecedor in fornecedores %}
+                <tr>
+                    <td>
+                        {{fornecedor.descricao}}
+                    </td>
+                    <td>
+                       <a href="#" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="#" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" class="init">
+        $(document).ready( function () {
+            $('#fornecedores_table').DataTable();
+        } );
+    </script>
+
+    <a href="#" class="btn btn-secondary">Cadastrar</a>
+
+{% endblock %}
