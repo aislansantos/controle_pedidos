@@ -20,7 +20,8 @@
                         {{cliente.nome}}
                     </td>
                     <td>
-                        Editar | Excluir
+                       <a href="{% url 'edit_cliente' pk=cliente.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="{% url 'delete_cliente' pk=cliente.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
             {% endfor %}
