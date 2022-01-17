@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cliente, Fornecedor
 from .forms import ClienteForm, FornecedorForm
@@ -86,3 +87,16 @@ def new_fornecedor(request):
         return render(request, 'cadastros/fornecedores_cadastro.html', {'form': form})
     fornecedores = Fornecedor.objects.all()
     return render(request, 'cadastros/fornecedores.html', {'fornecedores': fornecedores})
+
+
+def edit_fornecedor(request, pk):
+    fornecedor = get_object_or_404(Fornecedor, pk=pk)
+    if request.method == "POST":
+        form = FornecedorForm(request.POST, instance=fornecedor)
+        if form.is_valid():
+            form.save()
+            return redirect('list_fornecedores')
+    else:
+        form = ClienteForm(instance=fornecedor)
+        return redirect(request, 'cadastros/fornecedores_cadastro.html', {'form':form})
+    
