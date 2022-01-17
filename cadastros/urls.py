@@ -24,4 +24,5 @@ urlpatterns +=[
     path('fornecedores/', views.list_fornecedores, name='list_fornecedores'),
     path('fornecedor/<int:pk>', views.detail_fornecedor, name="detail_fornecedor"),
     path('fornecedor/novo', views.new_fornecedor, name='new_fornecedor' ),
+    path('fornedor/<int:pk>/edit', views.edit_fornecedor, name='edit_fornecedor',)
 ]

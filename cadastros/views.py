@@ -97,6 +97,7 @@ def edit_fornecedor(request, pk):
             form.save()
             return redirect('list_fornecedores')
     else:
-        form = ClienteForm(instance=fornecedor)
-        return redirect(request, 'cadastros/fornecedores_cadastro.html', {'form':form})
-    
+        form = FornecedorForm(instance=fornecedor)
+        return render(request, 'cadastros/fornecedores_cadastro.html', {'form':form})
+    fornecedores = Fornecedor.objects.all()
+    return render(request, 'cadastros/fornecedores.html', {'fornecedores': fornecedores})

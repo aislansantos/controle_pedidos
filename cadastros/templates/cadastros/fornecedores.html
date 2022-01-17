@@ -1,6 +1,6 @@
 {% extends 'cadastros/base.html' %}
 
-{% block title %} Cadastro clientes {% endblock %}
+{% block title %} Cadastro Fornecedores {% endblock %}
 
 {% block content %}
     <br>
@@ -20,7 +20,7 @@
                         {{fornecedor.descricao}}
                     </td>
                     <td>
-                       <a href="#" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="{% url 'edit_fornecedor' pk=fornecedor.pk%}" class="btn btn-secondary btn-sm">Editar</a>
                        <a href="#" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
