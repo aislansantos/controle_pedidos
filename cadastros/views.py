@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Cliente, Fornecedor
+from .models import Cliente, Fornecedor, Filial
 from .forms import ClienteForm, FornecedorForm
 
 # Create your views here.
@@ -99,3 +99,9 @@ def delete_fornecedor(request, pk):
     fornecedor = get_object_or_404(Fornecedor, pk=pk)
     fornecedor.delete()
     return redirect('list_fornecedores')
+
+
+# Views referente ao CRUD dos FORNECEDORES
+def list_filiais(request):
+    filiais = Filial.objects.all()
+    return render(request, 'cadastros/filiais.html', {'filiais': filiais})

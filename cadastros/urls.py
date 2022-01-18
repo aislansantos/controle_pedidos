@@ -1,8 +1,7 @@
 from django.urls import path
 from . import views
-import cadastros
 
-
+# Index
 urlpatterns = [
     path('', views.home, name='home'),
 
@@ -26,4 +25,10 @@ urlpatterns += [
     path('fornecedor/novo', views.new_fornecedor, name='new_fornecedor'),
     path('fornedor/<int:pk>/edit', views.edit_fornecedor, name='edit_fornecedor',),
     path('fornecedor/deletar/<int:pk>', views.delete_fornecedor, name='delete_fornecedor'),
+]
+
+
+# urls Filiais
+urlpatterns += [
+    path('filiais/', views.list_filiais, name='list_filiais'),
 ]

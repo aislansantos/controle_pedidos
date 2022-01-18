@@ -1,12 +1,12 @@
 {% extends 'cadastros/base.html' %}
 
-{% block title %} Cadastro clientes {% endblock %}
+{% block title %} Cadastro Filiais {% endblock %}
 
 {% block content %}
     <br>
-    <h1>Cadastro de Clientes</h1>
+    <h1>Cadastro de Filiais</h1>
     <hr>
-    <table id="clientes_table" class="display">
+    <table id="filiais_table" class="display">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -14,14 +14,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for cliente in clientes %}
+            {% for filial in filiais %}
                 <tr>
                     <td>
-                        {{cliente.nome}}
+                        {{filial.descricao}}
                     </td>
                     <td>
-                       <a href="{% url 'edit_cliente' pk=cliente.pk %}" class="btn btn-secondary btn-sm">Editar</a>
-                       <a href="{% url 'delete_cliente' pk=cliente.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                       <a href="#" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="#" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -33,14 +33,14 @@
 
     <script type="text/javascript" class="init">
         $(document).ready( function () {
-            $('#clientes_table').DataTable({
+            $('#filiais_table').DataTable({
                 "columnDefs": [
                 { "width": "80%", "targets": 0 }
-            ]
-        });
+                ]
+            });
         } );
     </script>
 
-    <a href="{% url 'new_cliente' %}" class="btn btn-secondary">Cadastrar</a>
+    <a href="#" class="btn btn-secondary">Cadastrar</a>
 
 {% endblock %}

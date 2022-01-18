@@ -33,7 +33,11 @@
 
     <script type="text/javascript" class="init">
         $(document).ready( function () {
-            $('#fornecedores_table').DataTable();
+            $('#fornecedores_table').DataTable({
+                "columnDefs": [
+                { "width": "80%", "targets": 0 }
+            ]
+        });
         } );
     </script>
 
