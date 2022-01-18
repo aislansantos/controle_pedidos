@@ -7,11 +7,7 @@ from .forms import ClienteForm, FornecedorForm
 
 # redicionamento de paginas
 
-'''
-    Cadastro de Clientes
-'''
-
-
+# Views referente ao CRUD dos CLIENTES
 def home(request):
     return render(request, 'cadastros/index.html')
 
@@ -60,11 +56,7 @@ def delete_cliente(request, pk):
     return redirect('list_clientes')
 
 
-'''
-    Cadastro de Fornecedores
-'''
-
-
+# Views referente ao CRUD dos FORNECEDORES
 def list_fornecedores(request):
     fornecedores = Fornecedor.objects.all()
     return render(request, 'cadastros/fornecedores.html', {'fornecedores': fornecedores})
@@ -101,3 +93,9 @@ def edit_fornecedor(request, pk):
         return render(request, 'cadastros/fornecedores_cadastro.html', {'form':form})
     fornecedores = Fornecedor.objects.all()
     return render(request, 'cadastros/fornecedores.html', {'fornecedores': fornecedores})
+
+
+def delete_fornecedor(request, pk):
+    fornecedor = get_object_or_404(Fornecedor, pk=pk)
+    fornecedor.delete()
+    return redirect('list_fornecedores')

@@ -20,8 +20,8 @@
                         {{fornecedor.descricao}}
                     </td>
                     <td>
-                       <a href="{% url 'edit_fornecedor' pk=fornecedor.pk%}" class="btn btn-secondary btn-sm">Editar</a>
-                       <a href="#" class="btn btn-danger btn-sm">Excluir</a>
+                       <a href="{% url 'edit_fornecedor' pk=fornecedor.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="{% url 'delete_fornecedor' pk=fornecedor.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
             {% endfor %}
