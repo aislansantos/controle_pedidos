@@ -31,4 +31,7 @@ urlpatterns += [
 # urls Filiais
 urlpatterns += [
     path('filiais/', views.list_filiais, name='list_filiais'),
+    path('filial/novo', views.new_filial, name='new_filial'),
+    path('filial/<int:pk>/edit', views.edit_filial, name='edit_filial'),
+    path('filial/<int:pk>/deletar', views.delete_filial, name='delete_filial')
 ]

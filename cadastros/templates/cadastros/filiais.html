@@ -20,8 +20,8 @@
                         {{filial.descricao}}
                     </td>
                     <td>
-                       <a href="#" class="btn btn-secondary btn-sm">Editar</a>
-                       <a href="#" class="btn btn-danger btn-sm">Excluir</a>
+                       <a href="{% url 'edit_filial' pk=filial.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="{% url 'delete_filial' pk=filial.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -41,6 +41,6 @@
         } );
     </script>
 
-    <a href="#" class="btn btn-secondary">Cadastrar</a>
+    <a href="{% url 'new_filial' %}" class="btn btn-secondary">Cadastrar</a>
 
 {% endblock %}
