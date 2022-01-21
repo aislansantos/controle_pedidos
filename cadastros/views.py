@@ -180,5 +180,7 @@ def edit_vendedor(request, pk):
     return render(request, 'cadastros/vendedores.html', {'vendedores':vendedores})
 
 
-def delete_vendedor(request):
-    pass
+def delete_vendedor(request, pk):
+    vendedor = get_object_or_404(Vendedor, pk=pk)
+    vendedor.delete()
+    return redirect('list_vendedores')

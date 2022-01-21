@@ -41,4 +41,5 @@ urlpatterns += [
     path('vendedores/', views.list_vendedores, name='list_vendedores'),
     path('vendedor/novo', views.new_vendedor, name='new_vendedor'),
     path('vendedor/<int:pk>/edit', views.edit_vendedor, name='edit_vendedor'),
+    path('vendedor/<int:pk>/deletar', views.delete_vendedor, name='delete_vendedor')
 ]
