@@ -1,0 +1,14 @@
+{% extends 'cadastros/base.html' %}
+
+{% block title %} Grupo de produtos {% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Cadastro Fornecedor</h2>
+    <hr>
+    <form method="POST" class="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-secondary">Salvar</button>
+    </form>
+{% endblock %}

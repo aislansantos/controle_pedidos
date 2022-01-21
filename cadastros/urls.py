@@ -43,3 +43,8 @@ urlpatterns += [
     path('vendedor/<int:pk>/edit', views.edit_vendedor, name='edit_vendedor'),
     path('vendedor/<int:pk>/deletar', views.delete_vendedor, name='delete_vendedor')
 ]
+
+#urls Grupos
+urlpatterns += [
+    path('grupos/', views.list_grupos, name='list_grupos'),
+]

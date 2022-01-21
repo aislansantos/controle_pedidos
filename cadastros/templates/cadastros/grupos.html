@@ -1,0 +1,46 @@
+{% extends 'cadastros/base.html' %}
+
+{% block title %} Cadastro Filiais {% endblock %}
+
+{% block content %}
+    <br>
+    <h1>Cadastro de Grupos</h1>
+    <hr>
+    <table id="grupos_table" class="display">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grupo in grupos %}
+                <tr>
+                    <td>
+                        {{grupo.descricao}}
+                    </td>
+                    <td>
+                       <a href="#" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="#" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" class="init">
+        $(document).ready( function () {
+            $('#grupos_table').DataTable({
+                "columnDefs": [
+                { "width": "80%", "targets": 0 }
+                ]
+            });
+        } );
+    </script>
+
+    <a href="#" class="btn btn-secondary">Cadastrar</a>
+
+{% endblock %}

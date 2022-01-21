@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Cliente, Fornecedor, Filial, Vendedor
+from .models import Cliente, Fornecedor, Filial, Vendedor, Grupo
 from .forms import ClienteForm, FornecedorForm, FilialForm, VendedorForm
 
 # Create your views here.
@@ -184,3 +184,8 @@ def delete_vendedor(request, pk):
     vendedor = get_object_or_404(Vendedor, pk=pk)
     vendedor.delete()
     return redirect('list_vendedores')
+
+# Views referente ao CRUD dos Grupos de Produtos
+def list_grupos(request):
+    grupos = Grupo.objects.all()
+    return render(request, 'cadastros/grupos.html', {'grupos':grupos})
