@@ -47,4 +47,5 @@ urlpatterns += [
 #urls Grupos
 urlpatterns += [
     path('grupos/', views.list_grupos, name='list_grupos'),
+    path('grupo/novo', views.new_grupo, name='new_grupo'),
 ]

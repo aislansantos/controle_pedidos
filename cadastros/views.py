@@ -1,7 +1,8 @@
 import re
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cliente, Fornecedor, Filial, Vendedor, Grupo
-from .forms import ClienteForm, FornecedorForm, FilialForm, VendedorForm
+from .forms import ClienteForm, FornecedorForm, FilialForm, VendedorForm, GrupoForm
+
 
 # Create your views here.
 
@@ -189,3 +190,59 @@ def delete_vendedor(request, pk):
 def list_grupos(request):
     grupos = Grupo.objects.all()
     return render(request, 'cadastros/grupos.html', {'grupos':grupos})
+
+
+def new_grupo(request):
+    if request.method == 'POST':
+        form = GrupoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            grupos = Grupo.objects.all()
+            return redirect('list_grupos')
+    else:
+        form = GrupoForm()
+        return render(request, 'cadastros/grupos_cadastro.html', {'form':form})
+    grupos = Grupo.objects.all()
+    return render(request, 'cadastros/grupos.html', {'grupos':grupos})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
