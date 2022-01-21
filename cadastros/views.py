@@ -18,11 +18,6 @@ def list_clientes(request):
     return render(request, 'cadastros/clientes.html', {'clientes': clientes})
 
 
-def detail_cliente(request, pk):
-    cliente = get_object_or_404(Cliente, pk=pk)
-    return render(request, 'cadastros/clientes_cadastro.html', {'cliente': cliente})
-
-
 def new_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
@@ -61,11 +56,6 @@ def delete_cliente(request, pk):
 def list_fornecedores(request):
     fornecedores = Fornecedor.objects.all()
     return render(request, 'cadastros/fornecedores.html', {'fornecedores': fornecedores})
-
-
-def detail_fornecedor(request):
-    fornecedor = Fornecedor.objects.all()
-    return render(request, 'cadastros/fornecedores_cadastro.html', {'fornecedor': fornecedor})
 
 
 def new_fornecedor(request):
@@ -108,10 +98,6 @@ def list_filiais(request):
     return render(request, 'cadastros/filiais.html', {'filiais': filiais})
 
 
-def detail_filial( request):
-    filiais = Filial.objects.all()
-    return render(request, 'cadastros/filiais.html', {'filiais': filiais})
-
 def new_filial(request):
     if request.method == 'POST':
         form = FilialForm(request.POST)
@@ -150,9 +136,6 @@ def list_vendedores(request):
     vendeores = Vendedor.objects.all()
     return render(request, 'cadastros/vendedores.html', {'vendedores':vendeores})
 
-def  detail_vendedore(request):
-    vendedor = Vendedor.objects.all()
-    return render(request, 'cadastros/vendedores.html',{'vendedor':vendedor})
 
 def new_vendedor(request):
     if request.method == 'POST':
@@ -201,6 +184,20 @@ def new_grupo(request):
             return redirect('list_grupos')
     else:
         form = GrupoForm()
+        return render(request, 'cadastros/grupos_cadastro.html', {'form':form})
+    grupos = Grupo.objects.all()
+    return render(request, 'cadastros/grupos.html', {'grupos':grupos})
+
+
+def edit_grupo(request, pk):
+    grupo = get_object_or_404(Grupo, pk=pk)
+    if request.method == 'POST':
+        form = GrupoForm(request.POST, instance=grupo)
+        if form.is_valid():
+            form.save()
+            return redirect('list_grupos')
+    else:
+        form = GrupoForm(instance=grupo)
         return render(request, 'cadastros/grupos_cadastro.html', {'form':form})
     grupos = Grupo.objects.all()
     return render(request, 'cadastros/grupos.html', {'grupos':grupos})

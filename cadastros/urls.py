@@ -13,7 +13,6 @@ urlpatterns += [
     path('clientes/', views.list_clientes, name='list_clientes'),
     path('cliente/novo', views.new_cliente, name='new_cliente'),
     path('cliente/deletar/<int:pk>/', views.delete_cliente, name="delete_cliente"),
-    path('cliente/<int:pk>', views.detail_cliente, name='detail_cliente'),
     path('cliente/<int:pk>/edit', views.edit_cliente, name='edit_cliente'),
 ]
 
@@ -21,7 +20,6 @@ urlpatterns += [
 # urls Fornecedores
 urlpatterns += [
     path('fornecedores/', views.list_fornecedores, name='list_fornecedores'),
-    path('fornecedor/<int:pk>', views.detail_fornecedor, name="detail_fornecedor"),
     path('fornecedor/novo', views.new_fornecedor, name='new_fornecedor'),
     path('fornedor/<int:pk>/edit', views.edit_fornecedor, name='edit_fornecedor',),
     path('fornecedor/deletar/<int:pk>', views.delete_fornecedor, name='delete_fornecedor'),
@@ -48,4 +46,5 @@ urlpatterns += [
 urlpatterns += [
     path('grupos/', views.list_grupos, name='list_grupos'),
     path('grupo/novo', views.new_grupo, name='new_grupo'),
+    path('grupo/<int:pk>/edit', views.edit_grupo, name='edit_grupo'),
 ]

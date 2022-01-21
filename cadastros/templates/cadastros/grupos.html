@@ -20,7 +20,7 @@
                         {{grupo.descricao}}
                     </td>
                     <td>
-                       <a href="#" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="{% url 'edit_grupo' pk=grupo.pk %}" class="btn btn-secondary btn-sm">Editar</a>
                        <a href="#" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
