@@ -1,7 +1,7 @@
 import re
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Cliente, Fornecedor, Filial
-from .forms import ClienteForm, FornecedorForm, FilialForm
+from .models import Cliente, Fornecedor, Filial, Vendedor
+from .forms import ClienteForm, FornecedorForm, FilialForm, VendedorForm
 
 # Create your views here.
 
@@ -142,3 +142,39 @@ def delete_filial(request, pk):
     filial = get_object_or_404(Filial, pk=pk)
     filial.delete()
     return redirect('list_filiais')
+
+
+# Views referente ao CRUD dos Vendedores
+def list_vendedores(request):
+    vendeores = Vendedor.objects.all()
+    return render(request, 'cadastros/vendedores.html', {'vendedores':vendeores})
+
+def  detail_vendedore(request):
+    vendedor = Vendedor.objects.all()
+    return render(request, 'cadastros/vendedores.html',{'vendedor':vendedor})
+
+def new_vendedor(request):
+    if request.method == 'POST':
+        form = VendedorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            vendedores = Vendedor.objects.all()
+            return redirect('list_vendedores')
+    else:
+        form = VendedorForm()
+        return render(request, 'cadastros/vendedores_cadastro.html', {'form':form})
+    vendedores = Vendedor.object.all()
+    return render(request, 'cadastros/vendedores.html', {'vendedores':vendedores})
+
+def edit_vendedor(request, pk):
+    vendedor = get_object_or_404(Vendedor, pk=pk)
+    if request.method == 'POST':
+        form = VendedorForm(request.POST, instance=vendedor)
+        if form.is_valid():
+            form.save()
+            return redirect('list_vendedores')
+    else:
+        form = VendedorForm(instance=vendedor)
+        return render(request, 'cadastros/vendedores_cadastro.html', {'form': form})
+    vendedores = Vendedor.objects.all()
+    return render(request, 'cadastros/vendedores.html', {'vendedores':vendedores})

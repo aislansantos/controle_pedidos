@@ -1,0 +1,46 @@
+{% extends 'cadastros/base.html' %}
+
+{% block title %} Cadastro Vendedores {% endblock %}
+
+{% block content %}
+    <br>
+    <h1>Cadastro de Vendedores</h1>
+    <hr>
+    <table id="vendedores_table" class="display">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vendedor in vendedores %}
+                <tr>
+                    <td>
+                        {{vendedor.nome}}
+                    </td>
+                    <td>
+                       <a href="{% url 'edit_vendedor' pk=vendedor.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="#" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" class="init">
+        $(document).ready( function () {
+            $('#vendedores_table').DataTable({
+                "columnDefs": [
+                { "width": "80%", "targets": 0 }
+            ]
+        });
+        } );
+    </script>
+
+    <a href={% url 'new_vendedor' %} class="btn btn-secondary">Cadastrar</a>
+
+{% endblock %}

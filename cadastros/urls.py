@@ -35,3 +35,10 @@ urlpatterns += [
     path('filial/<int:pk>/edit', views.edit_filial, name='edit_filial'),
     path('filial/<int:pk>/deletar', views.delete_filial, name='delete_filial')
 ]
+
+#urls Vendedores
+urlpatterns += [
+    path('vendedores/', views.list_vendedores, name='list_vendedores'),
+    path('vendedor/novo', views.new_vendedor, name='new_vendedor'),
+    path('vendedor/<int:pk>/edit', views.edit_vendedor, name='edit_vendedor'),
+]
