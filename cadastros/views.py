@@ -178,3 +178,7 @@ def edit_vendedor(request, pk):
         return render(request, 'cadastros/vendedores_cadastro.html', {'form': form})
     vendedores = Vendedor.objects.all()
     return render(request, 'cadastros/vendedores.html', {'vendedores':vendedores})
+
+
+def delete_vendedor(request):
+    pass
