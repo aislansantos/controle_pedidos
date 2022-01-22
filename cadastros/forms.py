@@ -1,6 +1,6 @@
 from turtle import mode
 from django import forms
-from .models import Cliente, Fornecedor, Filial, Vendedor, Grupo
+from .models import Cliente, Fornecedor, Filial, Vendedor, Grupo, Produto
 
 
 class ClienteForm(forms.ModelForm):
@@ -29,3 +29,13 @@ class GrupoForm(forms.ModelForm):
     class Meta:
         model = Grupo
         fields = ['descricao']
+
+class ProdutoForm(forms.ModelForm):
+    class Meta:
+        model = Produto
+        fields = [
+            'descricao',
+            'grupo',
+            'fornecedor',
+            'estoque'
+                  ]

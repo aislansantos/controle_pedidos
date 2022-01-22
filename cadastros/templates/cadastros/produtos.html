@@ -1,0 +1,54 @@
+{% extends 'cadastros/base.html' %}
+
+{% block title %} Cadastro Filiais {% endblock %}
+
+{% block content %}
+    <br>
+    <h1>Cadastro de Produtos</h1>
+    <hr>
+    <table id="produtos_table" class="display">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Grupo</th>
+                <th>Fornecedor</th>
+                <th>Estoque</th>
+                <th>Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+                <tr>
+                    <td>
+                        {{produto.descricao}}
+                    </td>
+                    <td>
+                        {{produto.grupo}}
+                    </td>
+                    <td>
+                        {{produto.fornecedor}}
+                    </td>
+                    <td>
+                        {{produto.estoque}}
+                    </td>
+                    <td>
+                       <a href="{% url 'edit_produto' pk=produto.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                       <a href="{% url 'delete_produto' pk=produto.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" class="init">
+        $(document).ready( function () {
+            $('#produtos_table').DataTable();
+        } );
+    </script>
+
+    <a href="{% url 'new_produto' %}" class="btn btn-secondary">Cadastrar</a>
+
+{% endblock %}

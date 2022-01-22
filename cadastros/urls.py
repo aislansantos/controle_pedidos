@@ -47,4 +47,14 @@ urlpatterns += [
     path('grupos/', views.list_grupos, name='list_grupos'),
     path('grupo/novo', views.new_grupo, name='new_grupo'),
     path('grupo/<int:pk>/edit', views.edit_grupo, name='edit_grupo'),
+    path('grupo/<int:pk>/deletar', views.delete_grupo, name='delete_grupo')
+]
+
+
+#urls Grupos
+urlpatterns +=[
+    path('produtos/', views.list_produtos, name='list_produtos'),
+    path('produto/novo', views.new_produto, name='new_produto'),
+    path('produto/<int:pk>/edit', views.edit_produto, name='edit_produto'),
+    path('produto/<int:pk>/delete', views.delete_produto, name='delete_produto'),
 ]

@@ -1,7 +1,7 @@
 import re
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Cliente, Fornecedor, Filial, Vendedor, Grupo
-from .forms import ClienteForm, FornecedorForm, FilialForm, VendedorForm, GrupoForm
+from .models import Cliente, Fornecedor, Filial, Vendedor, Grupo, Produto
+from .forms import ClienteForm, FornecedorForm, FilialForm, VendedorForm, GrupoForm, ProdutoForm
 
 
 # Create your views here.
@@ -202,11 +202,47 @@ def edit_grupo(request, pk):
     grupos = Grupo.objects.all()
     return render(request, 'cadastros/grupos.html', {'grupos':grupos})
 
+def delete_grupo(request, pk):
+    grupo = get_object_or_404(Grupo, pk=pk)
+    grupo.delete()
+    return redirect('list_grupos')
+
+# Views referente ao CRUD dos Vendedores
+def list_produtos(request):
+    produtos = Produto.objects.all()
+    return render(request, 'cadastros/produtos.html', {'produtos':produtos})
+
+def new_produto(request):
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            produtos = Produto.objects.all()
+            return redirect('list_produtos')
+    else:
+        form = ProdutoForm()
+        return render(request, 'cadastros/produtos_cadastro.html', {'form':form})
+    grupos = Grupos.objects.all()
+    return render(request, 'cadastros/produtos.html', {'produtos':produtos})
+
+def edit_produto(request, pk):
+    produto = get_object_or_404(Produto, pk=pk)
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST, instance=produto)
+        if form.is_valid():
+            form.save()
+            return redirect('list_produtos')
+    else:
+        form = ProdutoForm(instance=produto)
+        return render(request, 'cadastros/produtos_cadastro.html', {'form':form})
+    produtos = Grupo.objects.all()
+    return render(request, 'cadastros/produtos.html', {'produtos':produtos})
 
 
-
-
-
+def delete_produto(request, pk):
+    produto = get_object_or_404(Produto, pk=pk)
+    produto.delete()
+    return redirect('list_produtos')
 
 
 
