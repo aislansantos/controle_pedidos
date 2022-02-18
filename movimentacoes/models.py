@@ -8,7 +8,7 @@ class PedidoCompra(django.db.models.Model):
         on_delete=django.db.models.CASCADE()
     )
 
-    valor_total_pedido = models.IntergerField(
+    valor_total_pedido = django.db.IntergerField(
 
     )
 
