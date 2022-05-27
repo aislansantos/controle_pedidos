@@ -1,16 +1,27 @@
-import django.db.models
+from django.db import models
 import cadastros.models
 
 
-class PedidoCompra(django.db.models.Model):
-    fornecedor = cadastros.models.forenkey(
+class PedidoCompra(models.Model):
+
+    numero_pedido_compra = models.IntegerField(
+        verbose_name="Número do Pedido",
+        max_length=10,
+    )
+
+    fornecedor = models.forenkey(
         cadastros.models.Fornecedor,
-        on_delete=django.db.models.CASCADE()
+        on_delete=models.CASCADE()
     )
 
-    valor_total_pedido = django.db.IntergerField(
-
+    filial = models.forenkey(
+        cadastros.models.filial,
+        on_delete = models.CASCADE,
     )
+
+    vencimento = models.DateTimeField()
+
+
 
     class Meta:
         db_table = "pedido_compra"
